@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 timerReset();
             }
         });
+
+        //点滅テスト
+        ImageView sec = findViewById(R.id.sec_test);
+        secondsFlashing(sec);
     }
 
     /**
@@ -111,5 +118,10 @@ public class MainActivity extends AppCompatActivity {
         String timerLeftFormatted = String.format("%02d:%02d", minutes, seconds);
         //時間表示に適応
         timeDisplay.setText(timerLeftFormatted);
+    }
+
+    public void secondsFlashing(ImageView sec){
+        Animation anim = AnimationUtils.loadAnimation(this,R.anim.flashing);
+        sec.startAnimation(anim);
     }
 }
