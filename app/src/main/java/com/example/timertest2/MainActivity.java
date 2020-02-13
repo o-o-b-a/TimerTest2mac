@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //gittest
+
     CountDownTimer timer;
     static long start_time = 0;//設定時間
     long remainingTime = 0;//残り時間
