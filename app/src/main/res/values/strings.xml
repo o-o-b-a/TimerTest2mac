@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TimerTest2</string>
+    <string name="appwidget_text">EXAMPLEてすと</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_test">Add widget</string>
+</resources>
