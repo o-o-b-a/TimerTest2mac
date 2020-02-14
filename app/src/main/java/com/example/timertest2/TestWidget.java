@@ -1,5 +1,7 @@
 package com.example.timertest2;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
@@ -18,18 +20,20 @@ public class TestWidget extends AppWidgetProvider {
                                 int appWidgetId) {
 
         CharSequence widgetText = context.getString(R.string.appwidget_text);//ここでStringの文字呼んで
-        // Construct the RemoteViews object
+        //RemoteViewsオブジェクトを構築します
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.test_widget);
         views.setTextViewText(R.id.textView, "あああ");//ここでlayoutのidに差し込んでる（layoutでのtextは表示されない）
+
+//        エラーはでないけど動かない…
+//        Animator anim= AnimatorInflater.loadAnimator(context,R.animator.anim);
+//        anim.setTarget(R.layout.test_widget);
+//        anim.start();
 
 
 //        ↓画像の差し替え方
 //        views.setImageViewResource(R.id.actionlimit_base,R.drawable.al_image_sample);
 
-        views.setViewVisibility(R.drawable.ic_actionlimit_base,1);
-//        views.setFloat(R.id.actionlimit_sec,"",);
-
-        // Instruct the widget manager to update the widget
+        // ウィジェットを更新するようにウィジェットマネージャーに指示する
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
