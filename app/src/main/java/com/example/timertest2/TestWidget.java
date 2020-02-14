@@ -2,13 +2,18 @@ package com.example.timertest2;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
+
+import java.util.Calendar;
 
 /**
  * Implementation of App Widget functionality.
@@ -23,6 +28,19 @@ public class TestWidget extends AppWidgetProvider {
         //RemoteViewsオブジェクトを構築します
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.test_widget);
         views.setTextViewText(R.id.textView, "あああ");//ここでlayoutのidに差し込んでる（layoutでのtextは表示されない）
+
+        //set alarm
+        final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        final Calendar TIME = Calendar.getInstance();
+        TIME.set(Calendar.MINUTE, 0);
+        TIME.set(Calendar.SECOND, 0);
+        TIME.set(Calendar.MILLISECOND, 0);
+        final Intent in = new Intent(context, NoteConfigureActivity.class);
+//        if (service == null) {
+//            service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+//        }
+        PendingIntent  service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.setRepeating(AlarmManager.RTC, 0, 1000 * 120,service);
 
 //        エラーはでないけど動かない…
 //        Animator anim= AnimatorInflater.loadAnimator(context,R.animator.anim);
