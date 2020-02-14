@@ -22,7 +22,11 @@ public class TestWidget extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.test_widget);
         views.setTextViewText(R.id.textView, "あああ");//ここでlayoutのidに差し込んでる（layoutでのtextは表示されない）
 
-//        views.setViewVisibility(R.layout.test_widget,0);
+
+//        ↓画像の差し替え方
+//        views.setImageViewResource(R.id.actionlimit_base,R.drawable.al_image_sample);
+
+        views.setViewVisibility(R.drawable.ic_actionlimit_base,1);
 //        views.setFloat(R.id.actionlimit_sec,"",);
 
         // Instruct the widget manager to update the widget

@@ -7,9 +7,17 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <include
+            android:id="testWidget"
+            layout="@layout/test_widget"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/timeEditMinute"
